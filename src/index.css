@@ -1,0 +1,45 @@
+@font-face {
+  font-family: 'GFVewPenGray_K';
+  src: local('GF뉴연필고딕그레이'), local('GFVewPenGray_K');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  font-family: 'GFVewPenGray_K', system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #2d2200;
+  background: #fffdf0;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
