@@ -1394,9 +1394,9 @@ function SubCardComponent({ subCard, onDelete, onUpdateRows, onMoveUp, onMoveDow
     >
       <div className="excel-wrap" style={columnStyle}>
         {/* Header row */}
-        <div className="excel-header excel-row">
-          <div className="excel-cell cell-check">
-            {readOnly ? null : (
+        <div className={`excel-header excel-row${readOnly ? ' excel-row--preview' : ''}`}>
+          {readOnly ? null : (
+            <div className="excel-cell cell-check">
               <button
                 type="button"
                 className="card-delete-btn card-delete-btn--header"
@@ -1405,8 +1405,8 @@ function SubCardComponent({ subCard, onDelete, onUpdateRows, onMoveUp, onMoveDow
               >
                 <DeleteIcon />
               </button>
-            )}
-          </div>
+            </div>
+          )}
           <div className="excel-cell cell-label">
             <div style={{ display: 'flex', alignItems: 'center', width: '100%', gap: 8 }}>
               <strong className="card-title-cell" style={{ flex: 1, minWidth: 0 }}>
@@ -1427,7 +1427,7 @@ function SubCardComponent({ subCard, onDelete, onUpdateRows, onMoveUp, onMoveDow
           <div className="excel-cell cell-amount header-total">
             {total ? total.toLocaleString() : ''}
           </div>
-          <div className="excel-cell cell-lock" />
+          {readOnly ? null : <div className="excel-cell cell-lock" />}
         </div>
 
         {/* Data rows */}
@@ -1439,19 +1439,20 @@ function SubCardComponent({ subCard, onDelete, onUpdateRows, onMoveUp, onMoveDow
             <div
               key={row.id}
               data-row
-              className={`excel-row${row.excluded ? ' excel-row--excluded' : ''}`}
+              className={`excel-row${readOnly ? ' excel-row--preview' : ''}${row.excluded ? ' excel-row--excluded' : ''}`}
             >
-              <div className="excel-cell cell-check">
-                <div className="row-check">
-                  <input
-                    type="checkbox"
-                    disabled={readOnly}
-                    checked={selectedRowIds.has(row.id)}
-                    onChange={(e) => toggleRowSelected(row.id, e.target.checked)}
-                    aria-label="행 선택"
-                  />
+              {readOnly ? null : (
+                <div className="excel-cell cell-check">
+                  <div className="row-check">
+                    <input
+                      type="checkbox"
+                      checked={selectedRowIds.has(row.id)}
+                      onChange={(e) => toggleRowSelected(row.id, e.target.checked)}
+                      aria-label="행 선택"
+                    />
+                  </div>
                 </div>
-              </div>
+              )}
               <div className="excel-cell cell-label">
                 <div className="cell-label-inner">
                   <input
@@ -1463,7 +1464,7 @@ function SubCardComponent({ subCard, onDelete, onUpdateRows, onMoveUp, onMoveDow
                     onKeyDown={handleEnterMove}
                     className="excel-input"
                   />
-                  {(row.memo ?? '').trim() ? (
+                  {!readOnly && (row.memo ?? '').trim() ? (
                     <span className="row-memo-hover">
                       <button type="button" className="row-memo-btn" aria-label="메모 보기">
                         <PencilIcon />
@@ -1496,13 +1497,15 @@ function SubCardComponent({ subCard, onDelete, onUpdateRows, onMoveUp, onMoveDow
                   />
                 </div>
               </div>
-              <div className="excel-cell cell-lock">
-                {row.locked ? (
-                  <span className="row-lock" aria-label="잠금됨" title="잠금됨">
-                    <LockSmallIcon />
-                  </span>
-                ) : null}
-              </div>
+              {readOnly ? null : (
+                <div className="excel-cell cell-lock">
+                  {row.locked ? (
+                    <span className="row-lock" aria-label="잠금됨" title="잠금됨">
+                      <LockSmallIcon />
+                    </span>
+                  ) : null}
+                </div>
+              )}
             </div>
           )
         })}

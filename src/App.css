@@ -643,6 +643,10 @@
   border-bottom: 1px solid #e8d8a0;
 }
 
+.excel-row--preview {
+  grid-template-columns: minmax(0, 1fr) var(--col-amount, 120px);
+}
+
 .excel-row:last-child {
   border-bottom: none;
 }
