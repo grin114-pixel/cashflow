@@ -250,11 +250,6 @@ function App() {
 
   const latestCard = useMemo(() => pickLatestCard(cashFlowCards), [cashFlowCards])
 
-  const latestSubCards = useMemo(() => {
-    if (!latestCard) return []
-    return subCardsByCardId[latestCard.id] ?? []
-  }, [latestCard, subCardsByCardId])
-
   const cardsInCreatedOrder = useMemo(() => {
     if (cashFlowCards.length === 0) return []
     return [...cashFlowCards].sort((a, b) => {
@@ -1042,27 +1037,7 @@ function App() {
               </div>
             ) : null}
 
-            {/* 2) Latest card detail preview */}
-            {latestCard && latestSubCards.length > 0 ? (
-              <section className="latest-preview">
-                <div className="sub-card-list">
-                  {latestSubCards.map((subCard) => (
-                    <SubCardComponent
-                      key={subCard.id}
-                      subCard={subCard}
-                      readOnly
-                      onDelete={() => {}}
-                      onUpdateRows={() => {}}
-                      onMoveUp={() => {}}
-                      onMoveDown={() => {}}
-                      askConfirm={async () => false}
-                    />
-                  ))}
-                </div>
-              </section>
-            ) : null}
-
-            {/* 3) Previous cards list */}
+            {/* Previous cards list */}
             {previousCardsRecentFirst.length > 0 ? <hr className="thick-divider" /> : null}
             {previousCardsRecentFirst.length > 0 ? (
               <div className="cashflow-card-list">
