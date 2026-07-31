@@ -380,13 +380,6 @@
   color: #2d2200;
 }
 
-.thick-divider {
-  height: 0;
-  border: 0;
-  border-top: 3px solid rgba(45, 34, 0, 0.18);
-  margin: 18px 0 10px;
-}
-
 .pin-card h1,
 .notice-card h2,
 .empty-state h2 {
@@ -424,39 +417,6 @@
   transition: transform 0.14s ease, box-shadow 0.14s ease;
   position: relative;
   overflow: hidden;
-}
-
-.cashflow-summary-card--latest {
-  /* deep navy to match yellow accent (not pure black) */
-  background: #111827;
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
-}
-
-.cashflow-summary-card--latest::before {
-  background: rgba(242, 194, 0, 0.95);
-}
-
-.cashflow-summary-card--latest .cashflow-card-name {
-  color: #fff;
-}
-
-.cashflow-summary-card--latest .cashflow-card-delete-btn {
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.cashflow-summary-card--latest .cashflow-card-delete-btn:hover {
-  color: #ef4444;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.cashflow-summary-card--latest .cashflow-stat {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-.cashflow-summary-card--latest .cashflow-stat-label {
-  color: rgba(255, 255, 255, 0.7);
 }
 
 .cashflow-summary-card::before {

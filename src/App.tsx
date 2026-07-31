@@ -992,7 +992,7 @@ function App() {
                   return (
                     <div
                       key={latestCard.id}
-                      className="cashflow-summary-card cashflow-summary-card--latest"
+                      className="cashflow-summary-card"
                       onClick={() => navigateToDetail(latestCard.id)}
                       role="button"
                       tabIndex={0}
@@ -1038,7 +1038,6 @@ function App() {
             ) : null}
 
             {/* Previous cards list */}
-            {previousCardsRecentFirst.length > 0 ? <hr className="thick-divider" /> : null}
             {previousCardsRecentFirst.length > 0 ? (
               <div className="cashflow-card-list">
                 {previousCardsRecentFirst.map((card) => {
