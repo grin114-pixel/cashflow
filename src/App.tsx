@@ -771,7 +771,9 @@ function App() {
           ) : (
             <>
               <div className="app-badge">
-                <CashFlowIcon />
+                <div className="app-icon">
+                  <img src="/header-icon.png" alt="Cash Flow" />
+                </div>
                 <span>Cash Flow</span>
               </div>
               <div className="pin-entry-field">
@@ -945,7 +947,7 @@ function App() {
       <header className="topbar">
         <div className="topbar-title">
           <div className="app-icon">
-            <CashFlowIcon />
+            <img src="/header-icon.png" alt="Cash Flow" />
           </div>
           <h1>Cash Flow</h1>
         </div>
